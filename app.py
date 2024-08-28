@@ -1,18 +1,16 @@
 import requests
 import streamlit as st
 
-# Define API key and base URL
+
 API_KEY = '72058a1e94124ebbdac89d9e559629c2'  # Replace with your actual API key
 BASE_URL = 'http://api.openweathermap.org/data/2.5/weather'
 
-# Function to get weather data
 def get_weather(city):
     try:
         complete_url = f"{BASE_URL}?q={city}&appid={API_KEY}&units=metric"
         response = requests.get(complete_url)
         data = response.json()
         
-        # Debugging: Print the raw JSON response
         print(data)
 
         if response.status_code == 200 and "main" in data:
@@ -35,7 +33,7 @@ def get_weather(city):
         print(e)
         return None
 
-# Streamlit app
+
 st.title("Real-Time Weather Dashboard")
 
 city = st.text_input("Enter city name")
